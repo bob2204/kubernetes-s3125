@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: busy
+  name: busy
+spec:
+  containers:
+  - args:
+    - sleep
+    - "3600"
+    image: busybox:1.28
+    name: busy
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
