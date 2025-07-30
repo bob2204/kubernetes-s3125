@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  MSG: Micro-TP n°7
+  PORT: "80"
+  VERSION: "0.8"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: hello
