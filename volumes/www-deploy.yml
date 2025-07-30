@@ -18,21 +18,20 @@ spec:
       - image: nginx:1.28
         name: nginx
         volumeMounts:
-          - name: html
+          - name: partage
             mountPath: /usr/share/nginx/html
-          - name: nginx
+            subPath: html
+          - name: partage
             mountPath: /etc/nginx/conf.d
+            subPath: nginx-conf
       - image: php:8.2-fpm
         name: php
         volumeMounts:
-          - name: html
+          - name: partage
             mountPath: /var/www/html
+            subPath: html
       volumes:
-        - name: html
+        - name: partage
           hostPath:
-            path: /home/stagiaire/lab-lempnet/html
-            type: Directory
-        - name: nginx
-          hostPath:
-            path: /home/stagiaire/lab-lempnet/nginx-conf
+            path: /home/stagiaire/lab-lempnet
             type: Directory
