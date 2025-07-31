@@ -48,6 +48,6 @@ spec:
             mountPath: /var/lib/hello-http
       volumes:
         - name: status
-          hostPath:
-            path: /home/stagiaire/hello
-            type: Directory
+          nfs:
+            path: /hello
+            server: 192.168.56.110
