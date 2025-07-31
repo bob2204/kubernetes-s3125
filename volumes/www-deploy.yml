@@ -21,9 +21,8 @@ spec:
           - name: partage
             mountPath: /usr/share/nginx/html
             subPath: html
-          - name: partage
+          - name: nginx-cfg
             mountPath: /etc/nginx/conf.d
-            subPath: nginx-conf
       - image: php:8.2-fpm
         name: php
         volumeMounts:
@@ -32,6 +31,9 @@ spec:
             subPath: html
       volumes:
         - name: partage
-          hostPath:
-            path: /home/stagiaire/lab-lempnet
-            type: Directory
+          nfs:
+            path: /
+            server: 192.168.56.110
+        - name: nginx-cfg
+          configMap:
+            name: nginx-cfg
