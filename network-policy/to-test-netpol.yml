@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: to-test
+  namespace: stage
+spec:
+  podSelector:
+    matchLabels:
+      app: test
+  ingress:
+    - from:
+      - podSelector:
+          matchExpressions:
+            - key: totest
+              operator: In
+              values:
+                - ok
+                - go
+                - allez
